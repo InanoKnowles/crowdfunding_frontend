@@ -181,21 +181,6 @@ function ContactPage() {
             )}
             </form>
         </section>
-
-        <aside className="contact-page__card contact-page__aside">
-            <h2>About Shelter</h2>
-            <p>
-            Shelter is an Australian crowdfunding platform dedicated to supporting
-            people experiencing homelessness through transparent, community-led
-            fundraising.
-            </p>
-
-            <ul className="contact-page__list">
-            <li><strong>Location:</strong> Australia</li>
-            <li><strong>Focus:</strong> Homelessness support</li>
-            <li><strong>Response time:</strong> 2 to 5 business days</li>
-            </ul>
-        </aside>
         </div>
     </main>
     );

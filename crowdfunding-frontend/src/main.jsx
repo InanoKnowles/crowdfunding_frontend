@@ -1,24 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
-import FundraiserPage from "./pages/FundraiserPage.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import NavBar from "./components/NavBar.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import FundraisersPage from "./pages/FundraisersPage.jsx";
+import FundraiserPage from "./pages/FundraiserPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+
 import "./styles/global.css";
 
-const router = createBrowserRouter([
-  {
-      path: "/",
-      element: <NavBar />,
-      children: [
-          { path: "/", element: <HomePage /> },
-          { path: "/fundraiser/:id", element: <FundraiserPage /> },
-
-      ],
-  },
-]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/fundraisers" element={<FundraisersPage />} />
+        <Route path="/fundraiser/:id" element={<FundraiserPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
