@@ -2,3 +2,18 @@
 @import "./base.css";
 @import "./layout.css";
 @import "./utilities.css";
+
+:root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --muted: #667085;
+    --border: rgba(15, 23, 42, 0.12);
+    --radius: 18px;
+    --shadow-sm: 0 8px 26px rgba(15, 23, 42, 0.08);
+    --brand: #0b5cff;
+    --brand-2: #28c7a8;
+}
+body {
+    background: var(--bg);
+}

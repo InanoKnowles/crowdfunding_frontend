@@ -1,13 +1,245 @@
-.fundraiser-page__header {
-    margin-bottom: 18px;
+.fundraiser__header {
+    margin-bottom: 16px;
 }
 
-.fundraiser-page__meta {
-    margin: 0 0 6px;
+.fundraiser__titleRow {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.fundraiser__title {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+}
+
+.fundraiser__meta {
+    margin: 6px 0 0;
     color: var(--muted);
 }
 
-.fundraiser-page__pledges {
+.fundraiser__grid {
+    display: grid;
+    gap: 14px;
+}
+
+@media (min-width: 980px) {
+    .fundraiser__grid {
+    grid-template-columns: 1.55fr 0.75fr;
+    align-items: start;
+    }
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.fundraiser__media {
+    background: #e9edf5;
+}
+
+.fundraiser__image {
+    width: 100%;
+    height: clamp(240px, 38vw, 520px);
+    object-fit: cover;
+    display: block;
+}
+
+.fundraiser__body {
+    padding: 16px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.stat__label {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.stat__value {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.progressBar {
+    height: 10px;
+    background: #eef1f6;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 10px 0 14px;
+}
+
+.progressBar__fill {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--brand), var(--brand-2));
+}
+
+.fundraiser__sectionTitle {
+    margin: 16px 0 8px;
+    font-size: 1.25rem;
+}
+
+.fundraiser__description {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+.fundraiser__side {
+    display: grid;
+    gap: 14px;
+}
+
+.statusPill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 900;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1;
+
+    padding: 0.45em 0.9em;
+    border-radius: 999px;
+
+    border: 2px solid transparent;
+    white-space: nowrap;
+}
+
+.statusPill--open {
+    background: rgba(45, 226, 82, 0.72);
+    border-color: rgba(10, 166, 107, 0.35);
+    color: #000000;
+}
+
+.statusPill--closed {
+    background: rgba(238, 59, 46, 0.82);
+    border-color: rgba(180, 35, 24, 0.35);
+    color: #000000;
+}
+
+.pledgeCard {
+    padding: 16px;
+}
+
+.pledgeCard__title {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+}
+
+.pledgeCard__subtitle {
+    margin: 0 0 12px;
+    color: var(--muted);
+}
+
+.pledgeForm {
+    display: grid;
+    gap: 10px;
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+}
+
+.field__label {
+    font-weight: 800;
+    color: var(--text);
+}
+
+.field__control {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font: inherit;
+    background: #fff;
+}
+
+.field__control:focus {
+    outline: none;
+    border-color: rgba(11, 92, 255, 0.35);
+    box-shadow: 0 0 0 4px rgba(11, 92, 255, 0.12);
+}
+
+.checkRow {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 700;
+}
+
+.button {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-weight: 900;
+    cursor: pointer;
+    background: #fff;
+}
+
+.button--primary {
+    border-color: rgba(11, 92, 255, 0.25);
+    background: rgba(11, 92, 255, 0.1);
+}
+
+.button--primary:hover {
+    background: rgba(11, 92, 255, 0.14);
+}
+
+.muted {
+    color: var(--muted);
+    margin: 0;
+}
+
+.notice {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    margin: 10px 0 0;
+}
+
+.notice--closed {
+    background: rgba(180, 35, 24, 0.08);
+    border-color: rgba(180, 35, 24, 0.18);
+}
+
+.formStatus {
+    margin: 8px 0 0;
+}
+
+.formStatus--success {
+    color: #067647;
+}
+
+.formStatus--error {
+    color: #b42318;
+}
+
+.pledgesCard {
+    padding: 16px;
+}
+
+.pledgesCard__title {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+}
+
+.pledgeList {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -15,15 +247,27 @@
     gap: 10px;
 }
 
-    .fundraiser-page__pledge {
-    padding: 12px 14px;
-    background: var(--surface);
+.pledgeItem {
     border: 1px solid var(--border);
     border-radius: 12px;
-    box-shadow: var(--shadow-sm);
+    padding: 12px;
+    background: #fff;
 }
 
-.fundraiser-page__pledge .amount {
-    font-weight: 800;
+.pledgeItem__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: baseline;
+}
+
+.pledgeItem__amount {
+    font-weight: 900;
+    font-size: 1.05rem;
+}
+
+.pledgeItem__comment {
+    margin-top: 6px;
     color: var(--text);
+    line-height: 1.5;
 }

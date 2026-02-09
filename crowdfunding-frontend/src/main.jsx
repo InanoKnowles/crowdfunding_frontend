@@ -8,8 +8,10 @@ import FundraisersPage from "./pages/FundraisersPage.jsx";
 import FundraiserPage from "./pages/FundraiserPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 import "./styles/global.css";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
