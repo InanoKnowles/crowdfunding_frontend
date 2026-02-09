@@ -1,71 +1,72 @@
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import "./NavBar.css";
+    import { NavLink, Link, useNavigate } from "react-router-dom";
+    import { useAuth } from "./AuthProvider.jsx";
+    import "./NavBar.css";
 
-function NavBar() {
-    const [open, setOpen] = useState(false);
+    function NavBar() {
+    const { token, username, logout } = useAuth();
+    const navigate = useNavigate();
 
-    function closeMenu() {
-    setOpen(false);
+    function handleLogout() {
+        logout();
+        navigate("/");
     }
 
     return (
-    <header className="site-header">
-        <div className="container site-header__inner">
-        <NavLink to="/" className="brand" onClick={closeMenu}>
-            <span className="brand__name">Shelter</span>
-            <span className="brand__tag">Crowdfunding for homelessness support</span>
-        </NavLink>
+        <header className="nav">
+        <div className="nav__inner container">
+            <div className="nav__left">
+            <Link to="/" className="nav__brand" aria-label="Go to Home">
+                <span className="nav__brandTitle">Shelter</span>
+                <span className="nav__brandTagline">Crowdfunding for homelessness support</span>
+            </Link>
+            </div>
 
-        <button
-            className="nav-toggle"
-            type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-        >
-            <span className="nav-toggle__bar" />
-            <span className="nav-toggle__bar" />
-            <span className="nav-toggle__bar" />
-        </button>
-
-        <nav className={`nav ${open ? "nav--open" : ""}`} aria-label="Primary">
+            <nav className="nav__links" aria-label="Primary">
             <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
-            onClick={closeMenu}
-            end
+                to="/"
+                end
+                className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
             >
-            Home
+                Home
             </NavLink>
 
             <NavLink
-            to="/fundraisers"
-            className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
-            onClick={closeMenu}
+                to="/fundraisers"
+                className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
             >
-            Fundraisers
+                Fundraisers
             </NavLink>
 
             <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
-            onClick={closeMenu}
+                to="/about"
+                className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
             >
-            About
+                About
             </NavLink>
 
             <NavLink
-            to="/contact"
-            className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
-            onClick={closeMenu}
+                to="/contact"
+                className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
             >
-            Contact
+                Contact
             </NavLink>
-        </nav>
+
+            {token ? (
+                <button type="button" className="nav__button" onClick={handleLogout}>
+                Log Out{username ? ` (${username})` : ""}
+                </button>
+            ) : (
+                <NavLink
+                to="/login"
+                className={({ isActive }) => (isActive ? "nav__link nav__link--active" : "nav__link")}
+                >
+                Login
+                </NavLink>
+            )}
+            </nav>
         </div>
-    </header>
+        </header>
     );
-}
+    }
 
-export default NavBar;
+    export default NavBar;

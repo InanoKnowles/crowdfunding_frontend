@@ -1,29 +1,38 @@
-import useFundraisers from "../hooks/use-fundraisers";
-import FundraiserCard from "../components/FundraiserCard";
-import "./HomePage.css";
+    import useFundraisers from "../hooks/use-fundraisers.js";
+    import FundraiserCard from "../components/FundraiserCard.jsx";
 
-function HomePage() {
-    const { fundraisers, isLoading, error } = useFundraisers();
+    function HomePage() {
+    const { fundraisers, isLoading } = useFundraisers();
+    const username = localStorage.getItem("username");
 
-    if (isLoading) {
-        return <p>Loading fundraisers...</p>;
-    }
-
-    if (error) {
-        return <p className="error">{error}</p>;
-    }
+    const activeFundraisers = fundraisers.filter(
+        (f) => f.computed_is_open === true
+    );
 
     return (
-    <div id="fundraiser-list">
-        {fundraisers.length === 0 ? (
-        <p>No fundraisers yet.</p>
-        ) : (
-        fundraisers.map((fundraiserData) => (
-            <FundraiserCard key={fundraiserData.id} fundraiserData={fundraiserData} />
-        ))
-        )}
-    </div>
-    );
-}
+        <main className="container section">
+        <header className="homeHeader">
+            <h1>Welcome {username ? username : "Visitor"}</h1>
+            <p className="muted">
+            Supporting people experiencing homelessness across Australia.
+            </p>
+        </header>
 
-export default HomePage;
+        <section>
+            <h2>Active fundraisers</h2>
+
+            {isLoading ? (
+            <p>Loading…</p>
+            ) : (
+            <div id="fundraiser-list">
+                {activeFundraisers.map((f) => (
+                <FundraiserCard key={f.id} fundraiserData={f} />
+                ))}
+            </div>
+            )}
+        </section>
+        </main>
+    );
+    }
+
+    export default HomePage;

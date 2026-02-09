@@ -1,5 +1,5 @@
     import { useEffect, useState, useCallback } from "react";
-    import getFundraisers from "../api/get-fundraisers";
+    import getFundraisers from "../api/get-fundraisers.js";
 
     export default function useFundraisers() {
     const [fundraisers, setFundraisers] = useState([]);
@@ -13,8 +13,12 @@
         try {
         const data = await getFundraisers();
         setFundraisers(data);
-        } catch (e) {
-        setError(e);
+        } catch (err) {
+        setError(
+            err instanceof Error
+            ? err
+            : new Error("Could not load fundraisers.")
+        );
         } finally {
         setIsLoading(false);
         }

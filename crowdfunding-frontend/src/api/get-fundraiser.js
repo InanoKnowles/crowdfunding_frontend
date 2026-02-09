@@ -1,19 +1,23 @@
-async function getFundraiser(fundraiserId) {
+    async function getFundraiser(fundraiserId) {
     const url = `${import.meta.env.VITE_API_URL}/fundraisers/${fundraiserId}`;
-    const response = await fetch(url, { method: "GET" });
+    const response = await fetch(url);
 
     if (!response.ok) {
-    const fallbackError = `Error fetching fundraiser with id ${fundraiserId}`;
+        let errorMessage = `Error fetching fundraiser with id ${fundraiserId}`;
 
-    const data = await response.json().catch(() => {
-        throw new Error(fallbackError);
-    });
+        try {
+        const data = await response.json();
+        if (data?.detail) {
+            errorMessage = data.detail;
+        }
+        } catch {
 
-    const errorMessage = data?.detail ?? fallbackError;
-    throw new Error(errorMessage);
+        }
+
+        throw new Error(errorMessage);
     }
 
-    return await response.json();
-}
+    return response.json();
+    }
 
-export default getFundraiser;
+    export default getFundraiser;
