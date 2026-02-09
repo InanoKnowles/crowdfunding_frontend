@@ -1,0 +1,10 @@
+.grid { display: grid; gap: 14px; }
+.stack { display: grid; gap: 12px; }
+.center { display: grid; place-items: centre; }
+
+.card-surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}

@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.section {
+    padding: 28px 0;
+}
+
+@media (max-width: 480px) {
+    :root { --gutter: 14px; }
+    .section { padding: 22px 0; }
+}
+
+@media (min-width: 768px) {
+    :root { --gutter: 18px; }
+}
+
+@media (min-width: 1024px) {
+    :root { --gutter: 20px; }
+}

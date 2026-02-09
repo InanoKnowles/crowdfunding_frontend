@@ -1,0 +1,38 @@
+.fundraiser-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.fundraiser-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(11, 92, 255, 0.25);
+}
+
+.fundraiser-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.fundraiser-card__image {
+    width: 100%;
+    height: clamp(180px, 28vw, 260px);
+    object-fit: cover;
+    background: #e9edf5;
+}
+
+.fundraiser-card__content {
+    padding: 14px;
+}
+
+.fundraiser-card__title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+}

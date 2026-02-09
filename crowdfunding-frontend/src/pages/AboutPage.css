@@ -1,0 +1,30 @@
+.about-page__header {
+    max-width: 70ch;
+    margin-bottom: 18px;
+}
+
+.about-page__grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr;
+}
+
+.about-page__card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 16px;
+}
+
+.about-page__list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+}
+
+@media (min-width: 768px) {
+    .about-page__grid {
+    grid-template-columns: repeat(3, 1fr);
+    }
+}

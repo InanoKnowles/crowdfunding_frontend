@@ -1,0 +1,20 @@
+:root {
+    --container-max: 1120px;
+    --gutter: 16px;
+    --radius: 14px;
+
+    --min-mobile: 320px;
+
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --border: #e6e8ee;
+
+    --text: #1b1f2a;
+    --muted: #5a6476;
+
+    --brand: #0b5cff;
+    --brand-2: #0aa66b;
+
+    --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+    --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.10);
+}

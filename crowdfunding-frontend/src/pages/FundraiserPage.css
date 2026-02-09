@@ -1,0 +1,29 @@
+.fundraiser-page__header {
+    margin-bottom: 18px;
+}
+
+.fundraiser-page__meta {
+    margin: 0 0 6px;
+    color: var(--muted);
+}
+
+.fundraiser-page__pledges {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+}
+
+    .fundraiser-page__pledge {
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.fundraiser-page__pledge .amount {
+    font-weight: 800;
+    color: var(--text);
+}
