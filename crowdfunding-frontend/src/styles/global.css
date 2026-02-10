@@ -1,19 +1,45 @@
-@import "./tokens.css";
-@import "./base.css";
-@import "./layout.css";
-@import "./utilities.css";
+    @import "./tokens.css";
+    @import "./base.css";
+    @import "./layout.css";
+    @import "./utilities.css";
 
-:root {
-    --bg: #f7f8fa;
-    --surface: #ffffff;
-    --text: #0f172a;
-    --muted: #667085;
-    --border: rgba(15, 23, 42, 0.12);
-    --radius: 18px;
-    --shadow-sm: 0 8px 26px rgba(15, 23, 42, 0.08);
-    --brand: #0b5cff;
-    --brand-2: #28c7a8;
-}
-body {
-    background: var(--bg);
-}
+    :root {
+        --bg: #f7f8fa;
+        --surface: #ffffff;
+        --text: #0f172a;
+        --muted: #667085;
+        --border: rgba(15, 23, 42, 0.12);
+        --radius: 18px;
+        --shadow-sm: 0 8px 26px rgba(15, 23, 42, 0.08);
+        --brand: #0b5cff;
+        --brand-2: #28c7a8;
+        --container-max: 1200px;
+        --container-pad: 24px;
+    }
+
+    body {
+        background: var(--bg);
+    }
+
+    .container {
+    width: min(var(--container-max), calc(100% - (var(--container-pad) * 2)));
+    margin-inline: auto;
+    }
+
+    .section {
+    padding: 28px 0;
+    }
+
+    @media (max-width: 900px) {
+    :root {
+        --container-max: 960px;
+        --container-pad: 20px;
+    }
+    }
+
+    @media (max-width: 600px) {
+    :root {
+        --container-max: 720px;
+        --container-pad: 16px;
+    }
+    }

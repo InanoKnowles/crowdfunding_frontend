@@ -1,77 +1,125 @@
-.fundraisers-page {
-    background: var(--bg);
-}
+    .fundraisersPage {
+    display: grid;
+    gap: 28px;
+    }
 
-.fundraisers-hero {
-    padding: 22px 0;
-    background: linear-gradient(180deg, rgba(11, 92, 255, 0.08), rgba(247, 248, 250, 0));
-    border-bottom: 1px solid var(--border);
-}
+    .fundraisersBlock {
+    display: grid;
+    gap: 16px;
+    }
 
-.fundraisers-hero__inner {
+    .fundraisersBlock__title {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin: 0;
+    }
+
+    .fundraisersBlock__sub {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.65);
+    font-size: 16px;
+    }
+
+    .createFundraiserCard,
+    .pledgesCard,
+    .createdCard,
+    .allFundraisersCard {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    padding: 18px;
+    }
+
+    .createFundraiserForm {
     display: grid;
     gap: 14px;
-}
-
-.fundraisers-hero__copy {
-    max-width: 70ch;
-}
-
-.fundraisers-hero__panel {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-    padding: 16px;
-}
-
-.fundraisers-toolbar {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 14px;
-}
-
-.fundraisers-search {
-    width: 100%;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px 12px;
-    font: inherit;
-}
-
-.create-form {
-    display: grid;
-    gap: 10px;
-}
-
-.create-form label {
-    display: grid;
-    gap: 6px;
-    font-weight: 700;
-    color: var(--text);
-}
-
-.create-form input,
-.create-form textarea {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px 12px;
-    font: inherit;
-    font-weight: 400;
-}
-
-.create-form__row {
-    display: grid;
-    gap: 10px;
-}
-
-@media (min-width: 900px) {
-    .fundraisers-hero__inner {
-    grid-template-columns: 1.2fr 0.8fr;
-    align-items: start;
     }
 
-    .create-form__row {
+    .createFundraiserForm__row {
+    display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 14px;
     }
-}
+
+    .field {
+    display: grid;
+    gap: 8px;
+    }
+
+    .field__label {
+    font-weight: 800;
+    color: rgba(15, 23, 42, 0.9);
+    }
+
+    .field__control {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    background: #fff;
+    padding: 12px 14px;
+    font-size: 16px;
+    outline: none;
+    }
+
+    .field__control:focus {
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
+    }
+
+    .fundraisersHeaderRow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    }
+
+    .searchBar {
+    width: min(720px, 100%);
+    position: relative;
+    }
+
+    .searchBar__input {
+    width: 100%;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    background: #fff;
+    padding: 14px 16px;
+    font-size: 16px;
+    outline: none;
+    }
+
+    .searchBar__input:focus {
+    border-color: rgba(99, 102, 241, 0.65);
+    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.14);
+    }
+
+    .fundraiserGrid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    }
+
+    @media (max-width: 1100px) {
+    .fundraiserGrid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    }
+
+    @media (max-width: 680px) {
+    .createFundraiserForm__row {
+        grid-template-columns: 1fr;
+    }
+
+    .fundraiserGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    }
+
+    @media (max-width: 420px) {
+    .fundraiserGrid {
+        grid-template-columns: 1fr;
+    }
+    }
