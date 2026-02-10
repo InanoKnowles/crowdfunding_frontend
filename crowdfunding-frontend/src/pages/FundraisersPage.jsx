@@ -227,7 +227,7 @@
         <main className="container section fundraisersPage">
         <section className="fundraisersBlock">
             <div className="createFundraiserCard">
-            <h2 className="fundraisersBlock__title">Create fundraiser</h2>
+            <h2 className="fundraisersBlock__title">{localStorage.getItem("username") || "Visitor"} Create a Fundraiser</h2>
             <p>Please note that Pledges are non-refundable and uneditable.</p>
 
             {!isLoggedIn ? (

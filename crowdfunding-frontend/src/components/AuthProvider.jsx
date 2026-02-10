@@ -1,41 +1,41 @@
-    import { createContext, useContext, useState } from "react";
+    import { createContext, useContext, useEffect, useState } from "react";
 
-    const AuthContext = createContext(null);
+    const AuthContext = createContext();
 
-    function AuthProvider({ children }) {
-    const [token, setToken] = useState(localStorage.getItem("token"));
-    const [username, setUsername] = useState(localStorage.getItem("username"));
+    export function AuthProvider({ children }) {
+    const [auth, setAuth] = useState({
+        token: null,
+        username: null,
+    });
 
-    function login(tokenValue, usernameValue) {
-        localStorage.setItem("token", tokenValue);
-        localStorage.setItem("username", usernameValue);
-        setToken(tokenValue);
-        setUsername(usernameValue);
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const username = localStorage.getItem("username");
+
+        if (token && username) {
+        setAuth({ token, username });
+        }
+    }, []);
+
+    function login(token, username) {
+        localStorage.setItem("token", token);
+        localStorage.setItem("username", username);
+        setAuth({ token, username });
     }
 
     function logout() {
         localStorage.removeItem("token");
         localStorage.removeItem("username");
-        setToken(null);
-        setUsername(null);
+        setAuth({ token: null, username: null });
     }
 
-    const value = {
-        token,
-        username,
-        login,
-        logout,
-    };
-
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider value={{ auth, login, logout }}>
+        {children}
+        </AuthContext.Provider>
+    );
     }
 
-    function useAuth() {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error("useAuth must be used within an AuthProvider");
+    export function useAuth() {
+    return useContext(AuthContext);
     }
-    return context;
-    }
-
-    export { AuthProvider, useAuth };
