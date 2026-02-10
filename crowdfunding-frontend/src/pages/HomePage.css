@@ -1,17 +1,171 @@
-#fundraiser-list {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    .homePage {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    }
+
+    .homeBlock {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .homeTitle {
+    margin: 0;
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    }
+
+    .homeSub {
+    margin: 10px 0 0;
+    font-size: 1rem;
+    color: rgba(15, 23, 42, 0.65);
+    max-width: 70ch;
+    }
+
+    .homeSearch__row {
+    display: flex;
+    flex-direction: column;
     gap: 14px;
-}
-
-@media (max-width: 980px) {
-    #fundraiser-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-}
 
-@media (max-width: 640px) {
-    #fundraiser-list {
-    grid-template-columns: 1fr;
+    .homeSearch__bar {
+    width: 100%;
     }
-}
+
+    .homeSearch__input {
+    height: 44px;
+    font-size: 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+    }
+
+    .homeBlock__title {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    }
+
+    .homeCarousel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 14px;
+    }
+
+    .homeCarousel__controls {
+    display: flex;
+    gap: 10px;
+    }
+
+    .homeCarousel__btn {
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    background: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    }
+
+    .homeCarousel__btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    }
+
+    .homeCarousel__card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    }
+
+    .homeCarousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    }
+
+    .homeCarousel__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.22);
+    background: rgba(15, 23, 42, 0.06);
+    cursor: pointer;
+    }
+
+    .homeCarousel__dot--active {
+    background: rgba(59, 130, 246, 0.35);
+    border-color: rgba(59, 130, 246, 0.6);
+    }
+
+    .homeCarousel__empty {
+    padding: 18px;
+    color: rgba(15, 23, 42, 0.65);
+    }
+
+    .homeHeaderRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 14px;
+    }
+
+    .homeRefresh {
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    background: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    }
+
+    .homeStats__grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+    }
+
+    .homeStat {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 18px;
+    padding: 14px;
+    background: rgba(15, 23, 42, 0.02);
+    }
+
+    .homeStat__label {
+    font-size: 0.95rem;
+    color: rgba(15, 23, 42, 0.6);
+    font-weight: 700;
+    }
+
+    .homeStat__value {
+    margin-top: 6px;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    }
+
+    @media (min-width: 768px) {
+    .homeSearch__row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .homeSearch__bar {
+        max-width: 520px;
+    }
+
+    .homeStats__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    }

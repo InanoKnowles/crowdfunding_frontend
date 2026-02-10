@@ -1,14 +1,18 @@
     async function getPledges(token) {
-    const url = `${import.meta.env.VITE_API_URL}/pledges/`;
-    const response = await fetch(url, {
-        headers: {
-        Authorization: `Token ${token}`,
-        },
-    });
+    const base = import.meta.env.VITE_API_URL.replace(/\/+$/, "");
+    const url = `${base}/pledges/`;
+
+    const headers = {};
+    if (token) headers.Authorization = `Token ${token}`;
+
+    const response = await fetch(url, { method: "GET", headers });
 
     if (!response.ok) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data?.detail || "Error fetching pledges");
+        const fallbackError = "Error fetching pledges";
+        const data = await response.json().catch(() => {
+        throw new Error(fallbackError);
+        });
+        throw new Error(data?.detail ?? fallbackError);
     }
 
     return await response.json();

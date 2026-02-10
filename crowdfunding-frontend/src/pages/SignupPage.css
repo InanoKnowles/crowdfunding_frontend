@@ -1,0 +1,83 @@
+    /* src/components/SignupForm.css */
+
+    .authCard {
+    width: min(560px, 100%);
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .authHeader {
+    margin-bottom: 18px;
+    }
+
+    .authTitle {
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    line-height: 1.1;
+    margin: 0 0 8px 0;
+    }
+
+    .authSub {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.7);
+    font-size: 1rem;
+    }
+
+    .authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    }
+
+    .authField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    }
+
+    .authLabel {
+    font-weight: 700;
+    color: rgba(15, 23, 42, 0.85);
+    }
+
+    .authInput {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .authInput:focus {
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+    }
+
+    .authButton {
+    margin-top: 6px;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 800;
+    }
+
+    .authFooter {
+    margin: 6px 0 0 0;
+    color: rgba(15, 23, 42, 0.7);
+    }
+
+    .authFooter a {
+    font-weight: 800;
+    text-decoration: none;
+    }
+
+    .authFooter a:hover {
+    text-decoration: underline;
+    }

@@ -1,4 +1,4 @@
-    async function postSignup(username, password) {
+    async function postSignup(username, email, password) {
     const url = `${import.meta.env.VITE_API_URL}/users/`;
     const response = await fetch(url, {
         method: "POST",
@@ -7,20 +7,18 @@
         },
         body: JSON.stringify({
         username,
+        email,
         password,
         }),
     });
 
+    const data = await response.json().catch(() => ({}));
+
     if (!response.ok) {
-        const fallbackError = "Error creating account";
-        const data = await response.json().catch(() => {
-        throw new Error(fallbackError);
-        });
-        const errorMessage = data?.detail ?? JSON.stringify(data) ?? fallbackError;
-        throw new Error(errorMessage);
+        throw new Error(data?.detail || JSON.stringify(data) || "Error trying to sign up");
     }
 
-    return await response.json();
+    return data;
     }
 
     export default postSignup;

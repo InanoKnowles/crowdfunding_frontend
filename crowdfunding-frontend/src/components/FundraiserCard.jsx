@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
-import "./FundraiserCard.css";
+    import { Link } from "react-router-dom";
+    import "./FundraiserCard.css";
 
-function FundraiserCard({ fundraiserData, pledgedAmount }) {
+    function FundraiserCard({ fundraiserData, pledgedAmount }) {
     const link = `/fundraiser/${fundraiserData.id}`;
 
     const isOpen =
         typeof fundraiserData.computed_is_open === "boolean"
-            ? fundraiserData.computed_is_open
-            : Boolean(fundraiserData.is_open);
+        ? fundraiserData.computed_is_open
+        : Boolean(fundraiserData.is_open);
 
     const title = fundraiserData.title || "Untitled fundraiser";
     const owner = fundraiserData.owner_username || "Unknown";
@@ -19,86 +19,61 @@ function FundraiserCard({ fundraiserData, pledgedAmount }) {
         : "No deadline";
 
     const description = (fundraiserData.description || "").trim();
-    const shortDescription =
-        description.length > 110
-            ? `${description.slice(0, 110)}…`
-            : description || "No description provided.";
 
     return (
-        <Link to={link} className="fc" aria-label={`Open fundraiser: ${title}`}>
-            <div className="fc__media">
-                <img
-                    className="fc__img"
-                    src={fundraiserData.image}
-                    alt={title}
-                    loading="lazy"
-                />
-                <span
-                    className={`fc__pill ${
-                        isOpen ? "fc__pill--open" : "fc__pill--closed"
-                    }`}
-                >
-                    {isOpen ? "Open" : "Closed"}
+        <Link to={link} className="fc">
+        <div className="fc__media">
+            <img
+            className="fc__img"
+            src={fundraiserData.image}
+            alt={title}
+            loading="lazy"
+            />
+            <span className={`fc__pill ${isOpen ? "fc__pill--open" : "fc__pill--closed"}`}>
+            {isOpen ? "Open" : "Closed"}
+            </span>
+        </div>
+
+        <div className="fc__content">
+            <h3 className="fc__title">{title}</h3>
+
+            <p className="fc__desc">{description}</p>
+
+            <div className="fc__meta">
+            <div className="fc__row">
+                <span className="fc__label">Raised: </span>
+                <span className="fc__value">
+                ${raised.toLocaleString("en-AU")}
                 </span>
             </div>
 
-            <div className="fc__body">
-                <div className="fc__top">
-                    <h3 className="fc__title">{title}</h3>
-                    <div className="fc__right">
-                        <div className="fc__line">
-                            <span className="fc__label">Amount:</span>
-                            <span className="fc__value">
-                                ${goal.toLocaleString("en-AU")}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="fc__mid">
-                    <div className="fc__line">
-                        <span className="fc__label">Created by:</span>
-                        <span className="fc__value fc__value--normal">
-                            {owner}
-                        </span>
-                    </div>
-
-                    <div className="fc__right">
-                        <div className="fc__line">
-                            <span className="fc__label">Due by:</span>
-                            <span className="fc__value">{deadlineText}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="fc__bottom">
-                    <span className="fc__label">Description: </span>
-                    <span className="fc__desc">{shortDescription}</span>
-                </div>
-
-                <div className="fc__raisedRow" aria-label="Raised so far">
-                    <span className="fc__raisedText">
-                        Raised:{" "}
-                        <strong>${raised.toLocaleString("en-AU")}</strong>
-                    </span>
-
-                    <span className="fc__goalText">
-                        Goal:{" "}
-                        <strong>${goal.toLocaleString("en-AU")}</strong>
-                    </span>
-                </div>
-
-                {pledgedAmount != null && (
-                    <div className="fc__pledgeNote">
-                        You pledged{" "}
-                        <strong>
-                            ${Number(pledgedAmount).toLocaleString("en-AU")}
-                        </strong>
-                    </div>
-                )}
+            <div className="fc__row">
+                <span className="fc__label">Goal: </span>
+                <span className="fc__value">
+                ${goal.toLocaleString("en-AU")}
+                </span>
             </div>
+
+            <div className="fc__footer">
+            <span className="fc__footerItem">
+                <strong>Due: </strong> {deadlineText}
+            </span>
+            </div>
+
+            <span className="fc__footerItem">
+                <strong> Created By: </strong> {owner}
+            </span>
+
+            {typeof pledgedAmount === "number" && (
+                <div className="fc__row fc__row--pledged">
+                You pledged ${pledgedAmount.toLocaleString("en-AU")}
+                </div>
+            )}
+            </div>
+
+        </div>
         </Link>
     );
-}
+    }
 
-export default FundraiserCard;
+    export default FundraiserCard;

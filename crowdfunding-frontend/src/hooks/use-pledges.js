@@ -1,25 +1,40 @@
-    import { useEffect, useState } from "react";
+    import { useCallback, useEffect, useState } from "react";
+    import getPledges from "../api/get-pledges.js";
+    import { useAuth } from "../components/AuthProvider.jsx";
 
     export default function usePledges() {
-    const [pledges, setPledges] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { auth } = useAuth();
+    const token = auth?.token || localStorage.getItem("token") || "";
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
+    const [pledges, setPledges] = useState([]);
+    const [isLoading, setIsLoading] = useState(Boolean(token));
+    const [error, setError] = useState(null);
+
+    const refetch = useCallback(async () => {
         if (!token) {
+        setPledges([]);
         setIsLoading(false);
+        setError(null);
         return;
         }
 
-        fetch(`${import.meta.env.VITE_API_URL}/pledges/`, {
-        headers: {
-            Authorization: `Token ${token}`,
-        },
-        })
-        .then((res) => res.json())
-        .then(setPledges)
-        .finally(() => setIsLoading(false));
-    }, []);
+        setIsLoading(true);
+        setError(null);
 
-    return { pledges, isLoading };
+        try {
+        const data = await getPledges(token);
+        setPledges(data);
+        } catch (e) {
+        setError(e);
+        setPledges([]);
+        } finally {
+        setIsLoading(false);
+        }
+    }, [token]);
+
+    useEffect(() => {
+        refetch();
+    }, [refetch]);
+
+    return { pledges, isLoading, error, refetch };
     }

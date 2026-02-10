@@ -78,6 +78,7 @@
 
     .searchBar {
     width: min(720px, 100%);
+    padding: 10px;
     position: relative;
     }
 
@@ -99,12 +100,12 @@
     .fundraiserGrid {
     display: grid;
     gap: 18px;
-    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     @media (max-width: 1100px) {
     .fundraiserGrid {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     }
 
@@ -114,7 +115,7 @@
     }
 
     .fundraiserGrid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(1, minmax(0, 1fr));
     }
     }
 

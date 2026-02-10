@@ -1,95 +1,171 @@
-    .nav {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    .navWrap {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
     }
 
-    .nav__inner {
+    .nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    padding: 14px 0;
+    gap: 16px;
+    }
+
+    .nav__left {
+    min-width: 0;
+    flex: 1 1 auto;
     }
 
     .nav__brand {
-    display: grid;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
     text-decoration: none;
-    color: inherit;
     line-height: 1.1;
+    min-width: 0;
     }
 
-    .nav__brandTitle {
-    font-weight: 900;
-    font-size: 20px;
-    letter-spacing: -0.02em;
+    .nav__brandName {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #0f172a;
+    white-space: nowrap;
     }
 
-    .nav__brandTagline {
-    margin-top: 4px;
-    font-size: 14px;
-    color: rgba(15, 23, 42, 0.65);
+    .nav__brandTag {
+    position: relative;
+    font-size: 0.78rem;
+    color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 52ch;
     }
 
-    .nav__links {
+    .nav__brandTag::before {
+    content: "Crowdfunding for homelessness support";
+    color: #64748b;
+    }
+
+    @media (max-width: 980px) {
+    .nav__brandTag::before {
+        content: "Small acts, big impact.";
+    }
+    .nav__brandTag {
+        font-size: 0.74rem;
+        max-width: 40ch;
+    }
+    }
+
+    @media (max-width: 760px) {
+    .nav__brandTag::before {
+        content: "Support someone today.";
+    }
+    .nav__brandTag {
+        font-size: 0.72rem;
+        max-width: 30ch;
+    }
+    }
+
+    @media (max-width: 560px) {
+    .nav__brandTag::before {
+        content: "Be kind. Give hope.";
+    }
+    .nav__brandTag {
+        font-size: 0.7rem;
+        max-width: 24ch;
+    }
+    }
+
+    @media (max-width: 420px) {
+    .nav__brandTag {
+        display: none;
+    }
+    }
+
+    .nav__right {
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
     justify-content: flex-end;
+    gap: 14px;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
     }
 
     .nav__link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
     text-decoration: none;
-    color: rgba(15, 23, 42, 0.85);
-    font-weight: 700;
-    padding: 10px 14px;
-    border-radius: 14px;
-    transition: background 120ms ease, color 120ms ease, box-shadow 120ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.03s ease;
     }
 
     .nav__link:hover {
-    background: rgba(99, 102, 241, 0.08);
+    background: #f1f5f9;
     }
 
-    .nav__link--active {
-    background: rgba(99, 102, 241, 0.14);
-    color: rgba(15, 23, 42, 0.95);
-    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.25) inset;
-    }
-
-    .nav__button {
-    border: 0;
-    cursor: pointer;
-    font-weight: 800;
-    padding: 10px 14px;
-    border-radius: 14px;
-    background: rgba(99, 102, 241, 0.14);
-    color: rgba(15, 23, 42, 0.95);
-    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.25) inset;
-    transition: background 120ms ease, transform 120ms ease;
-    }
-
-    .nav__button:hover {
-    background: rgba(99, 102, 241, 0.18);
-    }
-
-    .nav__button:active {
+    .nav__link:active {
     transform: translateY(1px);
     }
 
-    @media (max-width: 680px) {
-    .nav__inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+    .nav__link--active {
+    background: #e0e7ff;
+    color: #1e3a8a;
+    box-shadow: inset 0 0 0 1px #c7d2fe;
     }
 
-    .nav__links {
-        width: 100%;
-        justify-content: flex-start;
+    .nav__link--primary {
+    background: #e0e7ff;
+    color: #1e3a8a;
+    box-shadow: inset 0 0 0 1px #c7d2fe;
+    }
+
+    .nav__link--primary:hover {
+    background: #c7d2fe;
+    }
+
+    .nav__link:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 2px;
+    }
+
+    @media (max-width: 860px) {
+    .nav {
+        padding: 12px 16px;
+    }
+
+    .nav__right {
+        gap: 10px;
+    }
+
+    .nav__link {
+        font-size: 0.92rem;
+        height: 34px;
+        padding: 0 10px;
+    }
+    }
+
+    @media (max-width: 520px) {
+    .nav__right {
+        gap: 8px;
+    }
+
+    .nav__link {
+        font-size: 0.9rem;
+        height: 34px;
+        padding: 0 9px;
     }
     }
