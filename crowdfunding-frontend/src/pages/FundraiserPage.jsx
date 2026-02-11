@@ -245,19 +245,11 @@
     if (isLoading) return <main className="container section">Loading…</main>;
 
     if (error) {
-        return (
-        <main className="container section">
-            {error.message}
-        </main>
-        );
+        return <main className="container section">{error.message}</main>;
     }
 
     if (!fundraiser) {
-        return (
-        <main className="container section">
-            Fundraiser not found.
-        </main>
-        );
+        return <main className="container section">Fundraiser not found.</main>;
     }
 
     return (
@@ -312,87 +304,97 @@
             )}
         </header>
 
+        {/* Owner edit form styled like LoginForm, but renamed properly */}
         {isOwner && isEditing && (
-            <section className="card editCard">
-            <h2 className="editCard__title">Edit fundraiser</h2>
+            <section className="editFundraiserCard">
+                <header className="editFundraiserHeader">
+                <h2 className="editFundraiserTitle">Edit fundraiser</h2>
+                <p className="editFundraiserSub">Update details and save your changes.</p>
+                </header>
 
-            <form className="editForm" onSubmit={handleSaveEdit} noValidate>
-                <label className="field">
-                <span className="field__label">Title</span>
-                <input
-                    className="field__control"
+                <form className="editFundraiserForm" onSubmit={handleSaveEdit} noValidate>
+                <label className="editFundraiserField">
+                    <span className="editFundraiserLabel">Title</span>
+                    <input
+                    className="editFundraiserInput"
                     name="title"
                     value={editForm.title}
                     onChange={handleEditChange}
                     required
-                />
+                    />
                 </label>
 
-                <label className="field">
-                <span className="field__label">Description</span>
-                <textarea
-                    className="field__control"
+                <label className="editFundraiserField">
+                    <span className="editFundraiserLabel">Description</span>
+                    <textarea
+                    className="editFundraiserInput editFundraiserTextarea"
                     name="description"
-                    rows={4}
+                    rows={5}
                     value={editForm.description}
                     onChange={handleEditChange}
                     required
-                />
-                </label>
-
-                <div className="editForm__row">
-                <label className="field">
-                    <span className="field__label">Goal (AUD)</span>
-                    <input
-                    className="field__control"
-                    name="goal"
-                    type="number"
-                    min="1"
-                    value={editForm.goal}
-                    onChange={handleEditChange}
-                    required
                     />
                 </label>
 
-                <label className="field">
-                    <span className="field__label">Deadline</span>
+                <div className="editFundraiserGrid">
+                    <label className="editFundraiserField">
+                    <span className="editFundraiserLabel">Goal (AUD)</span>
                     <input
-                    className="field__control"
-                    name="deadline"
-                    type="date"
-                    value={editForm.deadline}
-                    onChange={handleEditChange}
+                        className="editFundraiserInput"
+                        name="goal"
+                        type="number"
+                        min="1"
+                        value={editForm.goal}
+                        onChange={handleEditChange}
+                        required
                     />
-                </label>
+                    </label>
+
+                    <label className="editFundraiserField">
+                    <span className="editFundraiserLabel">Deadline</span>
+                    <input
+                        className="editFundraiserInput"
+                        name="deadline"
+                        type="date"
+                        value={editForm.deadline}
+                        onChange={handleEditChange}
+                    />
+                    </label>
                 </div>
 
-                <label className="field">
-                <span className="field__label">Image URL</span>
-                <input
-                    className="field__control"
+                <label className="editFundraiserField">
+                    <span className="editFundraiserLabel">Image URL</span>
+                    <input
+                    className="editFundraiserInput"
                     name="image"
                     value={editForm.image}
                     onChange={handleEditChange}
                     required
-                />
+                    />
                 </label>
 
-                <label className="checkRow">
-                <input
-                    name="is_open"
-                    type="checkbox"
-                    checked={Boolean(editForm.is_open)}
-                    onChange={handleEditChange}
-                />
-                Accepting pledges
-                </label>
+                <div className="editFundraiserActions">
+                    <label className="editFundraiserCheck">
+                    <input
+                        name="is_open"
+                        type="checkbox"
+                        checked={Boolean(editForm.is_open)}
+                        onChange={handleEditChange}
+                    />
+                    <span>Accepting pledges</span>
+                    </label>
 
-                <button className="button button--primary" type="submit" disabled={editStatus.state === "submitting"}>
-                {editStatus.state === "submitting" ? "Saving…" : "Save changes"}
-                </button>
-            </form>
+                    <button
+                    className="button button--primary editFundraiserButton"
+                    type="submit"
+                    disabled={editStatus.state === "submitting"}
+                    >
+                    {editStatus.state === "submitting" ? "Saving…" : "Save changes"}
+                    </button>
+                </div>
+                </form>
             </section>
-        )}
+            )}
 
         <div className="fundraiser__grid">
             <section className="card fundraiser__main">
@@ -441,7 +443,7 @@
                 <h2 className="pledgeCard__title">Make a pledge</h2>
 
                 {!isLoggedIn ? (
-                <div className="notice">Please log in to make a pledge.</div>
+                <div className="pledgeCard__noticeBox">Please log in to make a pledge.</div>
                 ) : (
                 <form className="pledgeForm" onSubmit={handleMakePledge} noValidate>
                     <label className="field">
@@ -470,24 +472,26 @@
                     />
                     </label>
 
-                    <label className="checkRow">
-                    <input
+                    <div className="pledgeActions">
+                    <label className="pledgeAnon">
+                        <input
                         name="anonymous"
                         type="checkbox"
                         checked={pledgeForm.anonymous}
                         onChange={handlePledgeChange}
                         disabled={!isOpen || pledgeStatus.state === "submitting"}
-                    />
-                    Pledge anonymously
+                        />
+                        <span>Pledge anonymously</span>
                     </label>
 
                     <button
-                    className="button button--primary"
-                    type="submit"
-                    disabled={!isOpen || pledgeStatus.state === "submitting"}
+                        className="button button--primary pledgeSubmit"
+                        type="submit"
+                        disabled={!isOpen || pledgeStatus.state === "submitting"}
                     >
-                    {pledgeStatus.state === "submitting" ? "Submitting…" : "Pledge now"}
+                        {pledgeStatus.state === "submitting" ? "Submitting…" : "Pledge now"}
                     </button>
+                    </div>
 
                     {pledgeStatus.state !== "idle" && (
                     <p

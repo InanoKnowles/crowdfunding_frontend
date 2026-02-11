@@ -166,6 +166,80 @@
   color: rgba(15, 23, 42, 0.88);
 }
 
+.cfCard {
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.cfHeader {
+  margin-bottom: 12px;
+}
+
+.cfTitle {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.cfSub {
+  margin: 0;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: 0.95rem;
+}
+
+.cfForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cfField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cfLabel {
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.cfInput {
+  width: 100%;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.cfInput:focus {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+}
+
+.cfInput:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.cfButton {
+  margin-top: 4px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
 @media (max-width: 520px) {
   .fc__right {
     text-align: left;

@@ -224,101 +224,117 @@
     }, [fundraisers, query]);
 
     return (
+        //----------------------------
         <main className="container section fundraisersPage">
-        <section className="fundraisersBlock">
-            <div className="createFundraiserCard">
-            <h2 className="fundraisersBlock__title">{localStorage.getItem("username") || "Visitor"} Create a Fundraiser</h2>
-            <p>Please note that Pledges are non-refundable and uneditable.</p>
-
-            {!isLoggedIn ? (
-                <p className="fundraisersBlock__sub">Log in to create a fundraiser.</p>
-            ) : (
-                <form className="createFundraiserForm" onSubmit={handleCreate} noValidate>
-                <label className="field">
-                    <span className="field__label">Title</span>
-                    <input
-                    className="field__control"
-                    name="title"
-                    value={createForm.title}
-                    onChange={handleCreateChange}
-                    placeholder="Warm beds winter drive"
-                    required
-                    disabled={createStatus.state === "submitting"}
-                    />
-                </label>
-
-                <label className="field">
-                    <span className="field__label">Description</span>
-                    <textarea
-                    className="field__control"
-                    name="description"
-                    rows={4}
-                    value={createForm.description}
-                    onChange={handleCreateChange}
-                    placeholder="Tell people what you are raising money for…"
-                    required
-                    disabled={createStatus.state === "submitting"}
-                    />
-                </label>
-
-                <div className="createFundraiserForm__row">
-                    <label className="field">
-                    <span className="field__label">Goal (AUD)</span>
-                    <input
-                        className="field__control"
-                        name="goal"
-                        type="number"
-                        min="1"
-                        value={createForm.goal}
-                        onChange={handleCreateChange}
-                        placeholder="5000"
-                        required
-                        disabled={createStatus.state === "submitting"}
-                    />
-                    </label>
-
-                    <label className="field">
-                    <span className="field__label">Deadline</span>
-                    <input
-                        className="field__control"
-                        name="deadline"
-                        type="date"
-                        value={createForm.deadline}
-                        onChange={handleCreateChange}
-                        disabled={createStatus.state === "submitting"}
-                    />
-                    </label>
-                </div>
-
-                <label className="field">
-                    <span className="field__label">Image URL</span>
-                    <input
-                    className="field__control"
-                    name="image"
-                    value={createForm.image}
-                    onChange={handleCreateChange}
-                    placeholder="https://…"
-                    required
-                    disabled={createStatus.state === "submitting"}
-                    />
-                </label>
-
-                <button className="button button--primary" type="submit" disabled={createStatus.state === "submitting"}>
-                    {createStatus.state === "submitting" ? "Creating…" : "Create fundraiser"}
-                </button>
-
-                {createStatus.state !== "idle" && (
-                    <p
-                    className={createStatus.state === "success" ? "formStatus formStatus--success" : "formStatus formStatus--error"}
-                    role="status"
-                    >
-                    {createStatus.message}
+            <section className="fundraisersBlock">
+                <div className="createFundraiserCard">
+                    <header className="createFundraiserHeader">
+                    <h2 className="createFundraiserTitle">
+                        {(localStorage.getItem("username") || "Visitor")} Create a Fundraiser
+                    </h2>
+                    <p className="createFundraiserSub">
+                        Please note that pledges are non-refundable and uneditable.
                     </p>
-                )}
-                </form>
-            )}
-            </div>
-        </section>
+                    </header>
+
+                    {!isLoggedIn ? (
+                    <p className="fundraisersBlock__sub">Log in to create a fundraiser.</p>
+                    ) : (
+                    <form className="createFundraiserForm" onSubmit={handleCreate} noValidate>
+                        <label className="createFundraiserField">
+                        <span className="createFundraiserLabel">Title</span>
+                        <input
+                            className="createFundraiserInput"
+                            name="title"
+                            value={createForm.title}
+                            onChange={handleCreateChange}
+                            placeholder="Warm beds winter drive"
+                            required
+                            disabled={createStatus.state === "submitting"}
+                        />
+                        </label>
+
+                        <label className="createFundraiserField">
+                        <span className="createFundraiserLabel">Description</span>
+                        <textarea
+                            className="createFundraiserInput createFundraiserTextarea"
+                            name="description"
+                            rows={5}
+                            value={createForm.description}
+                            onChange={handleCreateChange}
+                            placeholder="Tell people what you are raising money for…"
+                            required
+                            disabled={createStatus.state === "submitting"}
+                        />
+                        </label>
+
+                        <div className="createFundraiserGrid">
+                        <label className="createFundraiserField">
+                            <span className="createFundraiserLabel">Goal (AUD)</span>
+                            <input
+                            className="createFundraiserInput"
+                            name="goal"
+                            type="number"
+                            min="1"
+                            value={createForm.goal}
+                            onChange={handleCreateChange}
+                            placeholder="5000"
+                            required
+                            disabled={createStatus.state === "submitting"}
+                            />
+                        </label>
+
+                        <label className="createFundraiserField">
+                            <span className="createFundraiserLabel">Deadline</span>
+                            <input
+                            className="createFundraiserInput"
+                            name="deadline"
+                            type="date"
+                            value={createForm.deadline}
+                            onChange={handleCreateChange}
+                            disabled={createStatus.state === "submitting"}
+                            />
+                        </label>
+                        </div>
+
+                        <label className="createFundraiserField">
+                        <span className="createFundraiserLabel">Image URL</span>
+                        <input
+                            className="createFundraiserInput"
+                            name="image"
+                            value={createForm.image}
+                            onChange={handleCreateChange}
+                            placeholder="https://…"
+                            required
+                            disabled={createStatus.state === "submitting"}
+                        />
+                        </label>
+
+                        <button
+                        className="button button--primary createFundraiserButton"
+                        type="submit"
+                        disabled={createStatus.state === "submitting"}
+                        >
+                        {createStatus.state === "submitting" ? "Creating…" : "Create fundraiser"}
+                        </button>
+
+                        {createStatus.state !== "idle" && (
+                        <p
+                            className={
+                            createStatus.state === "success"
+                                ? "formStatus formStatus--success"
+                                : "formStatus formStatus--error"
+                            }
+                            role="status"
+                        >
+                            {createStatus.message}
+                        </p>
+                        )}
+                    </form>
+                    )}
+                </div>
+                </section>
+        
 
         {isLoggedIn && (
             <section className="fundraisersBlock">

@@ -2,6 +2,7 @@
     import { useNavigate, Link } from "react-router-dom";
     import postLogin from "../api/post-login.js";
     import "./LoginForm.css";
+    import { useAuth } from "/src/components/AuthProvider";
 
     function LoginForm() {
     const navigate = useNavigate();
@@ -34,8 +35,12 @@
         try {
         const response = await postLogin(username, password);
 
-        window.localStorage.setItem("token", response.token);
-        window.localStorage.setItem("username", username);
+        
+
+        const { login } = useAuth();
+
+        login(response.token, username);
+        navigate("/");
 
         setStatus({ state: "success", message: "Logged in. Redirecting…" });
         navigate("/");

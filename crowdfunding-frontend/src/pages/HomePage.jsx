@@ -112,7 +112,7 @@
 
         <section className="homeBlock homeCarousel">
             <div className="homeCarousel__header">
-            <h2 className="homeBlock__title">Active fundraisers</h2>
+            <h2 className="homeBlock__title">Top 3 Fundraisers</h2>
 
             <div className="homeCarousel__controls">
                 <button
@@ -184,6 +184,7 @@
             <p className="fundraisersBlock__sub">No open fundraisers match your search.</p>
             )}
         </section>
+
 
         <section className="homeBlock homeStats">
             <h2 className="homeBlock__title">Impact so far</h2>

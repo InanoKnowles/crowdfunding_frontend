@@ -1,7 +1,8 @@
     import { useState } from "react";
-    import { useNavigate } from "react-router-dom";
+    import { useNavigate, Link } from "react-router-dom";
     import postSignup from "../api/post-signup.js";
     import postLogin from "../api/post-login.js";
+    import "./SignupForm.css";
 
     function SignupForm() {
     const navigate = useNavigate();
@@ -15,25 +16,19 @@
     const [status, setStatus] = useState({ state: "idle", message: "" });
 
     function handleChange(e) {
-        const { name, value } = e.target;
-        setForm((prev) => ({ ...prev, [name]: value }));
+        const { id, value } = e.target;
+        setForm((prev) => ({ ...prev, [id]: value }));
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
-        setStatus({ state: "idle", message: "" });
 
         const username = form.username.trim();
         const email = form.email.trim();
         const password = form.password;
 
-        if (!username) {
-        setStatus({ state: "error", message: "Username is required." });
-        return;
-        }
-
-        if (!email) {
-        setStatus({ state: "error", message: "Email is required." });
+        if (!username || !email || !password) {
+        setStatus({ state: "error", message: "Please fill in all fields." });
         return;
         }
 
@@ -42,7 +37,7 @@
         return;
         }
 
-        if (!password || password.length < 8) {
+        if (password.length < 8) {
         setStatus({ state: "error", message: "Password must be at least 8 characters." });
         return;
         }
@@ -59,73 +54,91 @@
         setStatus({ state: "success", message: "Account created. Logging you in…" });
         navigate("/");
         } catch (err) {
-        setStatus({ state: "error", message: err?.message || "Signup failed." });
+        setStatus({ state: "error", message: err?.message || "Signup failed. Please try again." });
         }
     }
 
     return (
-        <form onSubmit={handleSubmit} className="authForm" noValidate>
-        <h1 className="authTitle">Sign up</h1>
+        <main className="container section">
+        <section className="authCard">
+            <header className="authHeader">
+            <h1 className="authTitle">Sign up</h1>
+            <p className="authSub">Create your account in a few seconds.</p>
+            </header>
 
-        <label className="field">
-            <span className="field__label">Username</span>
-            <input
-            className="field__control"
-            name="username"
-            type="text"
-            value={form.username}
-            onChange={handleChange}
-            placeholder="Choose a username"
-            disabled={status.state === "submitting"}
-            required
-            />
-        </label>
+            <form className="authForm" onSubmit={handleSubmit} noValidate>
+            <label className="authField" htmlFor="username">
+                <span className="authLabel">Username</span>
+                <input
+                className="authInput"
+                id="username"
+                type="text"
+                value={form.username}
+                onChange={handleChange}
+                placeholder="Choose a username"
+                autoComplete="username"
+                disabled={status.state === "submitting"}
+                required
+                />
+            </label>
 
-        <label className="field">
-            <span className="field__label">Email</span>
-            <input
-            className="field__control"
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="you@example.com"
-            disabled={status.state === "submitting"}
-            required
-            />
-        </label>
+            <label className="authField" htmlFor="email">
+                <span className="authLabel">Email</span>
+                <input
+                className="authInput"
+                id="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+                autoComplete="email"
+                disabled={status.state === "submitting"}
+                required
+                />
+            </label>
 
-        <label className="field">
-            <span className="field__label">Password</span>
-            <input
-            className="field__control"
-            name="password"
-            type="password"
-            value={form.password}
-            onChange={handleChange}
-            placeholder="At least 8 characters"
-            disabled={status.state === "submitting"}
-            required
-            />
-        </label>
+            <label className="authField" htmlFor="password">
+                <span className="authLabel">Password</span>
+                <input
+                className="authInput"
+                id="password"
+                type="password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder="At least 8 characters"
+                autoComplete="new-password"
+                disabled={status.state === "submitting"}
+                required
+                />
+            </label>
 
-        <button className="button button--primary" type="submit" disabled={status.state === "submitting"}>
-            {status.state === "submitting" ? "Creating…" : "Create account"}
-        </button>
-
-        {status.state !== "idle" && (
-            <p
-            className={
-                status.state === "success"
-                ? "formStatus formStatus--success"
-                : "formStatus formStatus--error"
-            }
-            role="status"
+            <button
+                className="button button--primary authButton"
+                type="submit"
+                disabled={status.state === "submitting"}
             >
-            {status.message}
+                {status.state === "submitting" ? "Creating…" : "Create account"}
+            </button>
+
+            {status.state !== "idle" && (
+                <p
+                className={
+                    status.state === "success"
+                    ? "formStatus formStatus--success"
+                    : "formStatus formStatus--error"
+                }
+                role="status"
+                >
+                {status.message}
+                </p>
+            )}
+
+            <p className="authFooter">
+                Already have an account? <Link to="/login">Log in</Link>
             </p>
-        )}
-        </form>
+            </form>
+        </section>
+        </main>
     );
     }
 
