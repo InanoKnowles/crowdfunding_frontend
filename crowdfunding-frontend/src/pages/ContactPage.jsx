@@ -89,7 +89,7 @@ function ContactPage() {
         <header className="contact-page__header">
         <h1>Contact</h1>
         <p>
-            If you have a question about Shelter, want to collaborate, or need help
+            If you have a question about ShelterOz, want to collaborate, or need help
             finding homelessness support services, please get in touch.
         </p>
         </header>

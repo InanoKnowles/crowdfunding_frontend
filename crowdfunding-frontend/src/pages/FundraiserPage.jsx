@@ -304,7 +304,6 @@
             )}
         </header>
 
-        {/* Owner edit form styled like LoginForm, but renamed properly */}
         {isOwner && isEditing && (
             <section className="editFundraiserCard">
                 <header className="editFundraiserHeader">
@@ -435,6 +434,9 @@
                 <p className="fundraiser__description">
                 {fundraiser.description || "No description provided yet."}
                 </p>
+                <span className="fc__footerItem">
+                <strong> Created By: </strong> {owner}
+                </span>
             </div>
             </section>
 

@@ -11,7 +11,7 @@
         <nav className="nav container" aria-label="Primary">
             <div className="nav__left">
             <NavLink to="/" className="nav__brand" aria-label="Shelter home">
-                <span className="nav__brandName">Shelter</span>
+                <span className="nav__brandName">ShelterOz</span>
                 <span className="nav__brandTag">Crowdfunding for homelessness support</span>
             </NavLink>
             </div>

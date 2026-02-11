@@ -110,9 +110,32 @@
             </p>
         </section>
 
+        <section className="homeBlock homeStats">
+            <h2 className="homeBlock__title">Impact so far</h2>
+
+            <div className="homeStats__grid">
+            <div className="homeStat">
+                <div className="homeStat__label">Fundraisers created</div>
+                <div className="homeStat__value">{stats.totalFundraisers.toLocaleString("en-AU")}</div>
+            </div>
+
+            <div className="homeStat">
+                <div className="homeStat__label">Total raised</div>
+                <div className="homeStat__value">
+                ${stats.totalRaised.toLocaleString("en-AU")}
+                </div>
+            </div>
+
+            <div className="homeStat">
+                <div className="homeStat__label">People helped</div>
+                <div className="homeStat__value">{stats.peopleHelped.toLocaleString("en-AU")}</div>
+            </div>
+            </div>
+        </section>
+
         <section className="homeBlock homeCarousel">
             <div className="homeCarousel__header">
-            <h2 className="homeBlock__title">Top 3 Fundraisers</h2>
+            <h2 className="homeBlock__title">Top 3 Fundraisers Closing Soon</h2>
 
             <div className="homeCarousel__controls">
                 <button
@@ -163,7 +186,7 @@
 
         <section className="homeBlock">
             <div className="homeHeaderRow">
-            <h2 className="homeBlock__title">All fundraisers</h2>
+            <h2 className="homeBlock__title">Active fundraisers</h2>
 
             <button type="button" className="homeRefresh" onClick={refetch}>
                 Refresh
@@ -185,29 +208,6 @@
             )}
         </section>
 
-
-        <section className="homeBlock homeStats">
-            <h2 className="homeBlock__title">Impact so far</h2>
-
-            <div className="homeStats__grid">
-            <div className="homeStat">
-                <div className="homeStat__label">Fundraisers created</div>
-                <div className="homeStat__value">{stats.totalFundraisers.toLocaleString("en-AU")}</div>
-            </div>
-
-            <div className="homeStat">
-                <div className="homeStat__label">Total raised</div>
-                <div className="homeStat__value">
-                ${stats.totalRaised.toLocaleString("en-AU")}
-                </div>
-            </div>
-
-            <div className="homeStat">
-                <div className="homeStat__label">People helped</div>
-                <div className="homeStat__value">{stats.peopleHelped.toLocaleString("en-AU")}</div>
-            </div>
-            </div>
-        </section>
         </main>
     );
     }

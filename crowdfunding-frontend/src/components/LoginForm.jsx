@@ -6,6 +6,7 @@
 
     function LoginForm() {
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const [credentials, setCredentials] = useState({
         username: "",
@@ -35,12 +36,7 @@
         try {
         const response = await postLogin(username, password);
 
-        
-
-        const { login } = useAuth();
-
         login(response.token, username);
-        navigate("/");
 
         setStatus({ state: "success", message: "Logged in. Redirecting…" });
         navigate("/");

@@ -22,8 +22,11 @@
     }
 
     .container {
-    width: min(var(--container-max), calc(100% - (var(--container-pad) * 2)));
-    margin-inline: auto;
+    width: min(1180px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
     }
 
     .section {
