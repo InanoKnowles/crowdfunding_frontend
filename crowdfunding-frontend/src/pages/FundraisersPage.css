@@ -103,12 +103,6 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    /* ---------------------------------------
-    Modern Create Fundraiser (new class names)
-    This matches your updated JSX:
-    createFundraiserHeader/Title/Sub/Form/Field/Label/Input/Grid/Textarea/Button
-    ---------------------------------------- */
-
     .createFundraiserHeader {
     margin-bottom: 18px;
     }
@@ -128,7 +122,6 @@
     font-weight: 600;
     }
 
-    /* Keep your form spacing but make it feel more premium */
     .createFundraiserForm {
     display: flex;
     flex-direction: column;
@@ -146,7 +139,6 @@
     color: rgba(15, 23, 42, 0.9);
     }
 
-    /* Inputs */
     .createFundraiserInput {
     width: 100%;
     min-width: 0;
@@ -181,7 +173,6 @@
     line-height: 1.45;
     }
 
-    /* Two-column row for goal/deadline */
     .createFundraiserGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -194,7 +185,6 @@
     }
     }
 
-    /* Button */
     .createFundraiserButton {
     width: 100%;
     display: flex;

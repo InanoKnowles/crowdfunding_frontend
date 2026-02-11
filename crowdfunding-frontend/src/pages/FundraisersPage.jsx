@@ -224,7 +224,6 @@
     }, [fundraisers, query]);
 
     return (
-        //----------------------------
         <main className="container section fundraisersPage">
             <section className="fundraisersBlock">
                 <div className="createFundraiserCard">

@@ -1,12 +1,9 @@
-    /* FundraiserPage.css */
 
-    /* Page wrapper */
     .fundraiser {
     max-width: 1180px;
     margin: 0 auto;
     }
 
-    /* Header */
     .fundraiser__header {
     display: flex;
     flex-direction: column;
@@ -36,7 +33,6 @@
     font-weight: 600;
     }
 
-    /* Status pill (big, like screenshot) */
     .statusPill {
     flex: 0 0 auto;
     padding: 14px 26px;
@@ -56,7 +52,6 @@
     background: rgba(239, 68, 68, 0.35);
     }
 
-    /* Grid layout */
     .fundraiser__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.65fr) minmax(0, 0.85fr);
@@ -64,7 +59,6 @@
     align-items: start;
     }
 
-    /* Generic card look (if your global .card already exists, this will just refine it) */
     .card {
     background: #fff;
     border-radius: 18px;
@@ -72,7 +66,6 @@
     border: 1px solid rgba(15, 23, 42, 0.06);
     }
 
-    /* Left main card */
     .fundraiser__main {
     padding: 14px;
     }
@@ -90,12 +83,11 @@
     object-fit: cover;
     }
 
-    /* Body spacing like screenshot */
+
     .fundraiser__body {
     padding: 14px 6px 6px;
     }
 
-    /* Stats row */
     .stats {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -116,7 +108,6 @@
     color: rgba(15, 23, 42, 0.92);
     }
 
-    /* Progress bar */
     .progressBar {
     height: 10px;
     border-radius: 999px;
@@ -132,7 +123,6 @@
     background: linear-gradient(90deg, rgba(37, 99, 235, 0.90), rgba(16, 185, 129, 0.90));
     }
 
-    /* Closed notice (pink strip) */
     .notice {
     border-radius: 14px;
     padding: 12px 14px;
@@ -149,7 +139,7 @@
     border-color: rgba(239, 68, 68, 0.18);
     }
 
-    /* Section title + description */
+
     .fundraiser__sectionTitle {
     margin: 10px 6px 8px;
     font-size: 1.1rem;
@@ -163,14 +153,13 @@
     font-weight: 550;
     }
 
-    /* Right side */
+
     .fundraiser__side {
     display: flex;
     flex-direction: column;
     gap: 14px;
     }
 
-    /* Pledge card */
     .pledgeCard {
     padding: 14px;
     }
@@ -191,7 +180,6 @@
     font-size: 0.95rem;
     }
 
-    /* Pledges card */
     .pledgesCard {
     padding: 14px;
     }
@@ -202,7 +190,6 @@
     font-weight: 900;
     }
 
-    /* Pledges list styling like screenshot */
     .pledgeList {
     list-style: none;
     padding: 0;
@@ -246,7 +233,6 @@
     font-size: 0.95rem;
     }
 
-    /* Pledge form footer actions (checkbox + button) */
     .pledgeActions {
     margin-top: 10px;
     padding-top: 12px;
@@ -281,14 +267,11 @@
     border-radius: 12px;
     }
 
-    /* Disabled state looks cleaner */
     .pledgeSubmit:disabled {
     opacity: 0.65;
     cursor: not-allowed;
     }
 
-
-    /* Owner actions block (kept from your original, with minor polish) */
     .ownerActions {
     display: flex;
     gap: 10px;
@@ -439,7 +422,6 @@
     font-weight: 800;
     }
 
-    /* Responsive: stack like mobile */
     @media (max-width: 980px) {
     .fundraiser__grid {
         grid-template-columns: 1fr;
