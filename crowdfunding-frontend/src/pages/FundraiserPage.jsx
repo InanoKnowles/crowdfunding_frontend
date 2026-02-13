@@ -435,7 +435,7 @@
                 {fundraiser.description || "No description provided yet."}
                 </p>
                 <span className="fc__footerItem">
-                <strong> Created By: </strong> {owner}
+                <strong> Created By: </strong> {isOwner}
                 </span>
             </div>
             </section>
