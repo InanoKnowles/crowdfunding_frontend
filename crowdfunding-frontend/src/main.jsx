@@ -23,12 +23,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/fundraisers/" element={<FundraisersPage />} />
-            <Route path="/fundraiser/:id/" element={<FundraiserPage />} />
-            <Route path="/about/" element={<AboutPage />} />
-            <Route path="/contact/" element={<ContactPage />} />
-            <Route path="/login/" element={<LoginPage />} />
-            <Route path="/signup/" element={<SignupPage />} />
+            <Route path="/fundraisers" element={<FundraisersPage />} />
+            <Route path="/fundraiser/:id" element={<FundraiserPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
           </Routes>
 
           <Footer />
